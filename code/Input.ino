@@ -42,7 +42,7 @@ void displays() {
     else {
       unitAP[0] = ' ';
       unitAP[1] = ' ';
-      tempAP_string = " ESCAPE ";
+      tempAP_string = " E5CAPE ";
       tempAP_string.toCharArray(str_tempAP, 9);
       tempAP_string.toCharArray(str_hourAP, 9);
       unitPE[0] = ' ';
@@ -302,10 +302,10 @@ void solidLightSet() {
 void xenonLightSet() {
   if (VData.XenonGasTot > 0.001) {
     byte hue = byte(VData.XenonGas / VData.XenonGasTot * 96.0);
-    leds[2] = CHSV(hue, 255, colour_value);
+    leds[9] = CHSV(hue, 255, colour_value);
   }
   else {
-    leds[2] = CRGB::Black;
+    leds[9] = CRGB::Black;
   }
 }
 
@@ -362,4 +362,3 @@ byte ControlStatus(byte n)
 {
   return ((VData.ActionGroups >> n) & 1) == 1;
 }
-

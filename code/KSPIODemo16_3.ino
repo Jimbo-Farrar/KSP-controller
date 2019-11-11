@@ -240,6 +240,13 @@ struct VesselData
   // 3 = RetroGrade //4 = Normal //5 = Antinormal //6 = Radial In
   // 7 = Radial Out //8 = Target //9 = Anti-Target //10 = Maneuver node
   // Last 4 bits set navball mode. (0=ignore,1=ORBIT,2=SURFACE,3=TARGET)
+  int16_t ProgradePitch;  //56 Pitch   Of the Prograde Vector;  int_16 ***Changed: now fix point, actual angle = angle/50*** used to be (-0x8000(-360 degrees) to 0x7FFF(359.99ish degrees)); 
+  int16_t ProgradeHeading;//57 Heading Of the Prograde Vector;  see above for range   (Prograde vector depends on navball mode, eg Surface/Orbit/Target)
+  int16_t ManeuverPitch;  //58 Pitch   Of the Maneuver Vector;  see above for range;  (0 if no Maneuver node)
+  int16_t ManeuverHeading;//59 Heading Of the Maneuver Vector;  see above for range;  (0 if no Maneuver node)
+  int16_t TargetPitch;    //60 Pitch   Of the Target   Vector;  see above for range;  (0 if no Target)
+  int16_t TargetHeading;  //61 Heading Of the Target   Vector;  see above for range;  (0 if no Target)
+  int16_t NormalHeading;  //62 Heading Of the Prograde Vector;  see above for range;  (Pitch of the Heading Vector is always 0)
 };
 
 struct HandShakePacket
@@ -323,4 +330,3 @@ void loop() {
   input();
   output();
 }
-
